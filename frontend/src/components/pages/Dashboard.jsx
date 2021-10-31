@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 
-function Home () {
+function Dashboard () {
     const {userData} = useContext(UserContext);
     const history = useHistory();
 
@@ -14,10 +14,7 @@ function Home () {
     return (
         <div>
             {userData.user ? (
-                <>
-                    <h1>Welcome {userData.user.displayName}</h1>
-                    <Link to="/dashboard">Dashboard</Link>
-                </>
+                <h1>Welcome {userData.user.displayName}</h1>
             ) : (
                 <>
                     <h2>You are not logged in</h2>
@@ -27,5 +24,5 @@ function Home () {
         </div>
     );
 }
- 
-export default Home;
+
+export default Dashboard;

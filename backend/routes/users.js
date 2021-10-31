@@ -6,11 +6,11 @@ const User = require("../models/user.model");
 
 router.post("/register", async (req, res) => {
   try {
-    let { email, password, passwordCheck, displayName } = req.body;
+    let { email, password, passwordCheck, shopName, shopOwner, shopAddress, contactNumber } = req.body;
 
     // validate
 
-    if (!email || !password || !passwordCheck)
+    if (!email || !password || !passwordCheck || !shopOwner || !shopAddress || !contactNumber || !shopName)
       return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res
@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
         .status(400)
         .json({ msg: "An account with this email already exists." });
 
-    if (!displayName) displayName = email;
+    if (!shopName) shopName = email;
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -35,7 +35,10 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       email,
       password: passwordHash,
-      displayName,
+      shopName,
+      shopOwner,
+      shopAddress,
+      contactNumber
     });
     const savedUser = await newUser.save();
     res.json(savedUser);
@@ -105,7 +108,7 @@ router.post("/tokenIsValid", async (req, res) => {
 router.get("/", auth, async (req, res) => {
   const user = await User.findById(req.user);
   res.json({
-    displayName: user.displayName,
+    shopName: user.shopName,
     id: user._id,
   });
 });

@@ -1,12 +1,15 @@
 import React, {useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+
+import './App.css';
+
+import Dashboard from './components/pages/Dashboard';
 import Header from './components/layout/Header';
 import Home from './components/pages/Home';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import UserContext from './context/userContext';
-import './App.css';
 
 function App() {
   const [ userData, setUserData] = useState({
@@ -43,6 +46,7 @@ function App() {
         <br/>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>

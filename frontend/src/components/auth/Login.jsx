@@ -31,13 +31,16 @@ function Login () {
     
     return (
         <div className="login">
-            <h2>Login</h2>
-            {error && <ErrorNotice message={error} clearError={() => setError(undefined)} />}
+            <h2>Login</h2><br/>
+            {error && <ErrorNotice message={error} clearError={() => setError(undefined)} />}<br/>
             <form onSubmit={submit}>
+
                 <label>Email: </label>
-                <input type="email" id="email" onChange={e => setEmail(e.target.value)}/>
+                <input type="email" id="email" onChange={e => setEmail(e.target.value)}/><br/><br/>
+
                 <label>Password: </label>
-                <input type="password" id="password" onChange={e => setPassword(e.target.value)}/>
+                <input type="password" id="password" onChange={e => setPassword(e.target.value)}/><br/><br/>
+
                 <input type="submit" value="Login" className="btn btn-primary" />
             </form>
         </div>
