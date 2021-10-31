@@ -7,7 +7,7 @@ class Header extends Component {
     render() { 
         return ( 
             <header className="header">
-                <Link to="/"><h1 className="title">MERN auth app</h1></Link>
+                <Link to="/"><h2 className="title">Covid Pro</h2></Link>
                 <AuthOptions />
             </header>
          );
