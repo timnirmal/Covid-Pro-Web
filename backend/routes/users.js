@@ -70,7 +70,7 @@ router.post("/login", async (req, res) => {
       token,
       user: {
         id: user._id,
-        displayName: user.displayName,
+        shopName: user.shopName,
       },
     });
   } catch (err) {
